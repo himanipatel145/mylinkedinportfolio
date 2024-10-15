@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import profile1 from "../assests/profile1.jpg";
 import linkedin from "../assests/linkedin.png";
 import github from "../assests/github.png";
 import email from "../assests/email.png";
+import { Modal } from "react-bootstrap";
 
 const Profile = () => {
+  const [showModal, setShowModal] = useState(false);
+  const handleClose = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
   return (
     <div>
       <section id="profile">
@@ -42,7 +46,11 @@ const Profile = () => {
             >
               Download CV
             </button>
-            <a href="tel:+14165551234" className="btn btn-color-1">
+            <a
+              className="btn btn-color-1"
+              onClick={handleShow}
+              //  onClick={() => window.open("tel:6472362529")}
+            >
               Contact Info
             </a>
           </div>
@@ -77,6 +85,19 @@ const Profile = () => {
           </div>
         </div>
       </section>
+      <Modal show={showModal} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Contact Information</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            <strong>Phone:</strong> +1 (647)-236-2529
+          </p>
+          <p>
+            <strong>Email: </strong>himanipatel14597@gmail.com
+          </p>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };
