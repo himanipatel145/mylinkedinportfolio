@@ -8,7 +8,7 @@ export const submitContactForm = (formData) => {
       dispatch(ContactActions.submitContactStart());
       const { data } = await axios({
         method: "POST",
-        url: `${process.env.REACT_APP_API_URL}/contactMe`,
+        url: `${process.env.REACT_APP_API_URL}/user/contactMe`,
         data: formData,
         headers: {
           "Content-Type": "multipart/form-data",
